@@ -1,0 +1,50 @@
+<form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <input
+      class="form-control"
+      [ngClass]="{'is-invalid': (form.controls['username'].invalid && form.controls['username'].touched)}"
+      type="text"
+      name="username"
+      formControlName="username"
+      placeholder="Логин"
+      autocomplete="username">
+    <div class="invalid-feedback">
+      <span *ngIf="form.controls['username'].errors?.['required']">
+        Необходимо указать логин<br>
+      </span>
+      <span *ngIf="form.controls['username'].errors?.['minlength']">
+        Логин должен содержать не менее {{form.controls['username'].errors?.['minlength']['requiredLength']}}
+        символов<br>
+      </span>
+    </div>
+  </div>
+  <div class="form-group pt-3">
+    <input
+      class="form-control"
+      [ngClass]="{'is-invalid': (form.controls['password'].invalid && form.controls['password'].touched)}"
+      type="password"
+      name="password"
+      formControlName="password"
+      placeholder="Пароль"
+      autocomplete="current-password">
+    <div class="invalid-feedback">
+      <span *ngIf="form.controls['password'].errors?.['required']">
+        Необходимо указать пароль<br>
+      </span>
+      <span *ngIf="form.controls['password'].errors?.['minlength']">
+        Пароль должен содержать не менее {{form.controls['password'].errors?.['minlength']['requiredLength']}}
+        символов<br>
+      </span>
+      <span *ngIf="form.controls['password'].errors?.['pattern']">
+        Пароль должен содержать цифры, заглавные и прописные латинские буквы<br>
+      </span>
+    </div>
+  </div>
+  <div class="pt-3">
+    <button class="btn btn-block btn-dark" type="submit" [disabled]="form.invalid || form.disabled">Войти</button>
+  </div>
+  <div class="alert alert-danger mt-3" *ngIf="error">{{error}}</div>
+</form>
+<div class="pt-5 text-muted text-center">
+  <a class="link-dark text-decoration-none fst-italic link-opacity-75-hover" routerLink="/sign-up">Еще нет аккаунта</a>
+</div>
