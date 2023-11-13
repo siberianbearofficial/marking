@@ -1,5 +1,4 @@
 import {Quadrilateral} from "./quadrilateral";
-import {Rectangle} from "./rectangle";
 
 export interface Record {
   uuid: string;
