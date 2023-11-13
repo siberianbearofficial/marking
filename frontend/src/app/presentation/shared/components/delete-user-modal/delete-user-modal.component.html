@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Внимание</h5>
+  <button
+    type="button"
+    class="btn-close ms-3"
+    aria-label="Close"
+    (click)="modalRef.close(false)"
+  ></button>
+</div>
+<div class="modal-body">
+  Вы собираетесь удалить пользователя.
+  В этом случае все данные, в том числе информация о его сохраненных записях, будут <strong>безвозвратно</strong> потеряны.
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="modalRef.close(false)">
+    Отмена
+  </button>
+  <button type="button" class="btn btn-danger" (click)="modalRef.close(true)">Удалить</button>
+</div>
