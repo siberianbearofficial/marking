@@ -1,0 +1,134 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "marking-frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/marking-frontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "bcryptjs",
+              "moment/moment"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/bootstrap/dist/css/bootstrap.rtl.css",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.css",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.rtl.css",
+              "node_modules/bootstrap/dist/css/bootstrap-reboot.css",
+              "node_modules/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+              "node_modules/bootstrap/dist/css/bootstrap-utilities.css",
+              "node_modules/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/js/dist/dom/event-handler.js",
+              "node_modules/bootstrap/js/dist/util/config.js",
+              "node_modules/bootstrap/js/dist/util/backdrop.js",
+              "node_modules/bootstrap/js/dist/util/component-functions.js",
+              "node_modules/bootstrap/js/dist/util/focustrap.js",
+              "node_modules/bootstrap/js/dist/util/index.js",
+              "node_modules/bootstrap/js/dist/util/sanitizer.js",
+              "node_modules/bootstrap/js/dist/util/scrollbar.js",
+              "node_modules/bootstrap/js/dist/util/swipe.js",
+              "node_modules/bootstrap/js/dist/util/template-factory.js",
+              "node_modules/bootstrap/js/dist/base-component.js",
+              "node_modules/bootstrap/js/dist/alert.js",
+              "node_modules/bootstrap/js/dist/modal.js",
+              "node_modules/bcryptjs/dist/bcrypt.js",
+              "node_modules/chart.js/dist/chart.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "marking-frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "marking-frontend:build:development",
+              "proxyConfig": "src/proxy.conf.json"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "marking-frontend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "48998161-49d9-4a59-b3f8-e1c8733a0b75"
+  }
+}
