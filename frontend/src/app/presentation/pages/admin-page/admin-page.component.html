@@ -1,0 +1,15 @@
+<div class="container-sm p-5">
+  <div class="h1 center-text pb-5">Управление пользователями</div>
+
+  <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+
+  <app-users-list [users]="users"
+                  [disabledUsersUuids]="disabledUsersUuids"
+                  (userDeletionEvent)="onUserDelete($event)"
+                  (userChangeEvent)="onUserChange($event)">
+  </app-users-list>
+
+  <div class="p-5 text-muted text-center">
+    <a class="link-dark text-decoration-none fst-italic link-opacity-75-hover" routerLink="/main">Назад</a>
+  </div>
+</div>
