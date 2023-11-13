@@ -1,0 +1,71 @@
+<div (window:resize)="afterInit()"></div>
+<div class="bg-image w-100" #imageContainer>
+  <svg class="position-absolute w-100 h-100" id="svg-line">
+    <g class="rectangle" *ngFor="let relativeRectangle of relativeRectangles">
+      <line class="line"
+            [attr.x1]="relativeRectangle.p1.x"
+            [attr.y1]="relativeRectangle.p1.y"
+            [attr.x2]="relativeRectangle.p2.x"
+            [attr.y2]="relativeRectangle.p1.y"/>
+      <line class="line"
+            [attr.x1]="relativeRectangle.p2.x"
+            [attr.y1]="relativeRectangle.p1.y"
+            [attr.x2]="relativeRectangle.p2.x"
+            [attr.y2]="relativeRectangle.p2.y"/>
+      <line class="line"
+            [attr.x1]="relativeRectangle.p2.x"
+            [attr.y1]="relativeRectangle.p2.y"
+            [attr.x2]="relativeRectangle.p1.x"
+            [attr.y2]="relativeRectangle.p2.y"/>
+      <line class="line"
+            [attr.x1]="relativeRectangle.p1.x"
+            [attr.y1]="relativeRectangle.p2.y"
+            [attr.x2]="relativeRectangle.p1.x"
+            [attr.y2]="relativeRectangle.p1.y"/>
+    </g>
+    <g class="barcode" *ngIf="relativeBarcodeQuadrilateral">
+      <line class="line"
+            [attr.x1]="relativeBarcodeQuadrilateral.p1.x"
+            [attr.y1]="relativeBarcodeQuadrilateral.p1.y"
+            [attr.x2]="relativeBarcodeQuadrilateral.p2.x"
+            [attr.y2]="relativeBarcodeQuadrilateral.p2.y"/>
+      <line class="line"
+            [attr.x1]="relativeBarcodeQuadrilateral.p2.x"
+            [attr.y1]="relativeBarcodeQuadrilateral.p2.y"
+            [attr.x2]="relativeBarcodeQuadrilateral.p3.x"
+            [attr.y2]="relativeBarcodeQuadrilateral.p3.y"/>
+      <line class="line"
+            [attr.x1]="relativeBarcodeQuadrilateral.p3.x"
+            [attr.y1]="relativeBarcodeQuadrilateral.p3.y"
+            [attr.x2]="relativeBarcodeQuadrilateral.p4.x"
+            [attr.y2]="relativeBarcodeQuadrilateral.p4.y"/>
+      <line class="line"
+            [attr.x1]="relativeBarcodeQuadrilateral.p4.x"
+            [attr.y1]="relativeBarcodeQuadrilateral.p4.y"
+            [attr.x2]="relativeBarcodeQuadrilateral.p1.x"
+            [attr.y2]="relativeBarcodeQuadrilateral.p1.y"/>
+    </g>
+    <g class="logo" *ngIf="relativeLogoQuadrilateral">
+      <line class="line"
+            [attr.x1]="relativeLogoQuadrilateral.p1.x"
+            [attr.y1]="relativeLogoQuadrilateral.p1.y"
+            [attr.x2]="relativeLogoQuadrilateral.p2.x"
+            [attr.y2]="relativeLogoQuadrilateral.p2.y"/>
+      <line class="line"
+            [attr.x1]="relativeLogoQuadrilateral.p2.x"
+            [attr.y1]="relativeLogoQuadrilateral.p2.y"
+            [attr.x2]="relativeLogoQuadrilateral.p3.x"
+            [attr.y2]="relativeLogoQuadrilateral.p3.y"/>
+      <line class="line"
+            [attr.x1]="relativeLogoQuadrilateral.p3.x"
+            [attr.y1]="relativeLogoQuadrilateral.p3.y"
+            [attr.x2]="relativeLogoQuadrilateral.p4.x"
+            [attr.y2]="relativeLogoQuadrilateral.p4.y"/>
+      <line class="line"
+            [attr.x1]="relativeLogoQuadrilateral.p4.x"
+            [attr.y1]="relativeLogoQuadrilateral.p4.y"
+            [attr.x2]="relativeLogoQuadrilateral.p1.x"
+            [attr.y2]="relativeLogoQuadrilateral.p1.y"/>
+    </g>
+  </svg>
+</div>
