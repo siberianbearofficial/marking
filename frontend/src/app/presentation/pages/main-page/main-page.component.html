@@ -1,0 +1,24 @@
+<div class="pt-3">
+  <button class="btn btn-block btn-light" [disabled]="disabled" routerLink="/change-password">Изменить пароль</button>
+</div>
+<div class="pt-3">
+  <button class="btn btn-block btn-light" [disabled]="disabled" routerLink="/archive">Архив</button>
+</div>
+<div class="pt-3" *ngIf="admin">
+  <button class="btn btn-block btn-light" [disabled]="disabled" routerLink="/admin">Пользователи</button>
+</div>
+<div class="pt-3">
+  <button class="btn btn-block btn-dark" [disabled]="disabled" routerLink="/add">Добавить</button>
+</div>
+<div class="p-5 text-muted d-flex justify-content-center align-items-center m-auto">
+  <div class="pe-3">
+    <a class="link-dark text-decoration-none fst-italic link-opacity-75-hover" role="button" (click)="onSignOutClick()">Выйти</a>
+  </div>
+  <div>/</div>
+  <div class="ps-3">
+    <a class="link-danger text-decoration-none fst-italic link-opacity-75-hover" role="button" (click)="openModal()">Удалить аккаунт</a>
+  </div>
+</div>
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>
+<div class="alert alert-success" *ngIf="success">{{success}}</div>
+
