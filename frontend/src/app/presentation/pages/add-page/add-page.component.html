@@ -1,0 +1,57 @@
+<div class="container-sm p-5">
+  <div class="pb-5 text-center h1">{{headingText}}</div>
+
+  <div *ngIf="step == 0">
+    <app-upload-images (photoImageEvent)="onPhotoImageChange($event)"
+                       (idealImageEvent)="onIdealImageChange($event)"
+                       (photoBlobEvent)="onPhotoBlobChange($event)"
+                       (idealBlobEvent)="onIdealBlobChange($event)">
+    </app-upload-images>
+  </div>
+
+  <div *ngIf="step == 1">
+    <app-change-image-selection (barcodeQuadrilateralEvent)="onBarcodeQuadrilateralChange($event)"
+                                (logoQuadrilateralEvent)="onLogoQuadrilateralChange($event)"
+                                [barcodeQuadrilateral]="record?.barcodeQuadrilateral"
+                                [logoQuadrilateral]="record?.logoQuadrilateral"
+                                [photoImage]="photoImage"
+                                [idealImage]="idealImage">
+    </app-change-image-selection>
+  </div>
+
+  <div *ngIf="step == 2">
+    <div class="text-center" *ngIf="record">
+      <div>
+        <span class="fst-italic" *ngIf="warning == NO_LOGO_QUADRILATERAL_WARNING.message">
+          Логотип не был распознан
+        </span>
+        <span *ngIf="warning != NO_LOGO_QUADRILATERAL_WARNING.message">
+        Совпадение логотипа: <strong [ngClass]="logoScoreSpanClass">{{formatScore(record.logoScore)}}%</strong>
+        </span>
+      </div>
+      <div class="pb-5">
+        <span class="fst-italic" *ngIf="warning == NO_BARCODE_QUADRILATERAL_WARNING.message">
+          Баркод не был распознан
+        </span>
+        <span *ngIf="warning != NO_BARCODE_QUADRILATERAL_WARNING.message">
+        Совпадение баркода: <strong [ngClass]="barcodeScoreSpanClass">{{formatScore(record.barcodeScore)}}%</strong>
+        </span>
+      </div>
+    </div>
+
+    <app-show-comparison-result [barcodeQuadrilateral]="record?.barcodeQuadrilateral"
+                                [logoQuadrilateral]="record?.logoQuadrilateral"
+                                [photoImage]="photoImage"
+                                [idealImage]="idealImage">
+    </app-show-comparison-result>
+  </div>
+
+  <div class="pt-5">
+    <button class="btn btn-block {{submitButtonClass}}" (click)="onSubmit()"
+            [disabled]="!(photoImage && idealImage)">{{submitButtonText}}
+    </button>
+    <div class="alert alert-danger mt-3" *ngIf="error">{{error}} <a class="text-decoration-none text-dark fw-bold"
+                                                                    routerLink="/main">Назад</a></div>
+    <div class="alert alert-warning mt-3" *ngIf="warning">{{warning}}</div>
+  </div>
+</div>

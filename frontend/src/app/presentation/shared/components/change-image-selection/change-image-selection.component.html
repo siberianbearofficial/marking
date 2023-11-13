@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-lg">
+    <div class="form-label">Эталонная маркировка</div>
+    <app-image-with-figures *ngIf="idealImage" [image]="idealImage"></app-image-with-figures>
+  </div>
+
+  <div class="col-lg mt-3 mt-lg-0">
+    <div class="form-label">Фотография коробки</div>
+    <app-image-selection
+      *ngIf="photoImage"
+      [image]="photoImage"
+      [barcodeQuadrilateral]="barcodeQuadrilateral"
+      [logoQuadrilateral]="logoQuadrilateral"
+      (barcodeQuadrilateralEvent)="onBarcodeQuadrilateralChange($event)"
+      (logoQuadrilateralEvent)="onLogoQuadrilateralChange($event)">
+    </app-image-selection>
+  </div>
+</div>

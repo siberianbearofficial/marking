@@ -1,0 +1,113 @@
+<div (window:resize)="afterInit()"></div>
+<div class="bg-image w-100" #imageContainer>
+  <svg class="position-absolute w-100 h-100" id="svg-line">
+    <g class="barcode" *ngIf="relativeBarcodeQuadrilateral">
+      <line class="line"
+            [attr.x1]="relativeBarcodeQuadrilateral.p1.x"
+            [attr.y1]="relativeBarcodeQuadrilateral.p1.y"
+            [attr.x2]="relativeBarcodeQuadrilateral.p2.x"
+            [attr.y2]="relativeBarcodeQuadrilateral.p2.y"/>
+      <line class="line"
+            [attr.x1]="relativeBarcodeQuadrilateral.p2.x"
+            [attr.y1]="relativeBarcodeQuadrilateral.p2.y"
+            [attr.x2]="relativeBarcodeQuadrilateral.p3.x"
+            [attr.y2]="relativeBarcodeQuadrilateral.p3.y"/>
+      <line class="line"
+            [attr.x1]="relativeBarcodeQuadrilateral.p3.x"
+            [attr.y1]="relativeBarcodeQuadrilateral.p3.y"
+            [attr.x2]="relativeBarcodeQuadrilateral.p4.x"
+            [attr.y2]="relativeBarcodeQuadrilateral.p4.y"/>
+      <line class="line"
+            [attr.x1]="relativeBarcodeQuadrilateral.p4.x"
+            [attr.y1]="relativeBarcodeQuadrilateral.p4.y"
+            [attr.x2]="relativeBarcodeQuadrilateral.p1.x"
+            [attr.y2]="relativeBarcodeQuadrilateral.p1.y"/>
+    </g>
+    <g class="logo" *ngIf="relativeLogoQuadrilateral">
+      <line class="line"
+            [attr.x1]="relativeLogoQuadrilateral.p1.x"
+            [attr.y1]="relativeLogoQuadrilateral.p1.y"
+            [attr.x2]="relativeLogoQuadrilateral.p2.x"
+            [attr.y2]="relativeLogoQuadrilateral.p2.y"/>
+      <line class="line"
+            [attr.x1]="relativeLogoQuadrilateral.p2.x"
+            [attr.y1]="relativeLogoQuadrilateral.p2.y"
+            [attr.x2]="relativeLogoQuadrilateral.p3.x"
+            [attr.y2]="relativeLogoQuadrilateral.p3.y"/>
+      <line class="line"
+            [attr.x1]="relativeLogoQuadrilateral.p3.x"
+            [attr.y1]="relativeLogoQuadrilateral.p3.y"
+            [attr.x2]="relativeLogoQuadrilateral.p4.x"
+            [attr.y2]="relativeLogoQuadrilateral.p4.y"/>
+      <line class="line"
+            [attr.x1]="relativeLogoQuadrilateral.p4.x"
+            [attr.y1]="relativeLogoQuadrilateral.p4.y"
+            [attr.x2]="relativeLogoQuadrilateral.p1.x"
+            [attr.y2]="relativeLogoQuadrilateral.p1.y"/>
+    </g>
+  </svg>
+  <div class="corners" *ngIf="initialBarcodeQuadrilateral">
+    <!--  Barcode quadrilateral corners  -->
+
+    <app-image-selection-corner [boundaryElement]="imageContainer"
+                                [initialPosition]="initialBarcodeQuadrilateral.p1"
+                                color="green"
+                                bgColor="darkseagreen"
+                                (dragMoveEvent)="onBarcodeQuadrilateralCornerDrag('p1', $event)"
+                                (dragEndEvent)="onDragEnd()">
+    </app-image-selection-corner>
+    <app-image-selection-corner [boundaryElement]="imageContainer"
+                                [initialPosition]="initialBarcodeQuadrilateral.p2"
+                                color="green"
+                                bgColor="darkseagreen"
+                                (dragMoveEvent)="onBarcodeQuadrilateralCornerDrag('p2', $event)"
+                                (dragEndEvent)="onDragEnd()">
+    </app-image-selection-corner>
+    <app-image-selection-corner [boundaryElement]="imageContainer"
+                                [initialPosition]="initialBarcodeQuadrilateral.p3"
+                                color="green"
+                                bgColor="darkseagreen"
+                                (dragMoveEvent)="onBarcodeQuadrilateralCornerDrag('p3', $event)"
+                                (dragEndEvent)="onDragEnd()">
+    </app-image-selection-corner>
+    <app-image-selection-corner [boundaryElement]="imageContainer"
+                                [initialPosition]="initialBarcodeQuadrilateral.p4"
+                                color="green"
+                                bgColor="darkseagreen"
+                                (dragMoveEvent)="onBarcodeQuadrilateralCornerDrag('p4', $event)"
+                                (dragEndEvent)="onDragEnd()">
+    </app-image-selection-corner>
+  </div>
+  <div class="corners" *ngIf="initialLogoQuadrilateral">
+    <!--  Logo quadrilateral corners  -->
+
+    <app-image-selection-corner [boundaryElement]="imageContainer"
+                                [initialPosition]="initialLogoQuadrilateral.p1"
+                                color="cornflowerblue"
+                                bgColor="lightskyblue"
+                                (dragMoveEvent)="onLogoQuadrilateralCornerDrag('p1', $event)"
+                                (dragEndEvent)="onDragEnd()">
+    </app-image-selection-corner>
+    <app-image-selection-corner [boundaryElement]="imageContainer"
+                                [initialPosition]="initialLogoQuadrilateral.p2"
+                                color="cornflowerblue"
+                                bgColor="lightskyblue"
+                                (dragMoveEvent)="onLogoQuadrilateralCornerDrag('p2', $event)"
+                                (dragEndEvent)="onDragEnd()">
+    </app-image-selection-corner>
+    <app-image-selection-corner [boundaryElement]="imageContainer"
+                                [initialPosition]="initialLogoQuadrilateral.p3"
+                                color="cornflowerblue"
+                                bgColor="lightskyblue"
+                                (dragMoveEvent)="onLogoQuadrilateralCornerDrag('p3', $event)"
+                                (dragEndEvent)="onDragEnd()">
+    </app-image-selection-corner>
+    <app-image-selection-corner [boundaryElement]="imageContainer"
+                                [initialPosition]="initialLogoQuadrilateral.p4"
+                                color="cornflowerblue"
+                                bgColor="lightskyblue"
+                                (dragMoveEvent)="onLogoQuadrilateralCornerDrag('p4', $event)"
+                                (dragEndEvent)="onDragEnd()">
+    </app-image-selection-corner>
+  </div>
+</div>

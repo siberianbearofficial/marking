@@ -1,0 +1,28 @@
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+  <tr>
+    <th>ID</th>
+    <th class="text-center">Совпадение логотипа</th>
+    <th class="text-center">Совпадение баркода</th>
+    <th class="text-center">Эталон</th>
+    <th class="text-center">Фото</th>
+    <th class="text-center">Удалить</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let record of records">
+    <td>{{record.uuid}}</td>
+    <td class="text-center"><strong *ngIf="record.logoScore" [ngClass]="getScoreClass(record.logoScore)">{{record.logoScore * 100}}%</strong></td>
+    <td class="text-center"><strong *ngIf="record.barcodeScore" [ngClass]="getScoreClass(record.barcodeScore)">{{record.barcodeScore * 100}}%</strong></td>
+    <td class="text-center"><a class="text-dark" role="button" (click)="onIdealIconClick(record)">
+      <i class="fa-regular fa-image"></i>
+    </a></td>
+    <td class="text-center"><a class="text-dark" role="button" (click)="onPhotoIconClick(record)">
+      <i class="fa-regular fa-image"></i>
+    </a></td>
+    <td class="text-center"><a class="text-danger" role="button" (click)="onRecordDelete(record)">
+      <i class="fa-regular fa-trash-can"></i>
+    </a></td>
+  </tr>
+  </tbody>
+</table>
