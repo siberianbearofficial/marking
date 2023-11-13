@@ -1,0 +1,68 @@
+services:
+
+  # nginx
+  web:
+    image: marking-web:latest
+    container_name: "marking-web"
+    build:
+      context: ./frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - backbone
+  
+  # database
+  db:
+    image: postgres:latest
+    container_name: "marking-postgres"
+    restart: always
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    networks:
+      - backbone
+      
+  # backend
+  backend:
+    image: marking-backend:latest
+    container_name: "marking-backend"
+    build:
+      context: ./backend
+    env_file:
+      - .env
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db
+    volumes:
+      - ./static:/static
+    networks:
+      - backbone
+  
+  # database admin panel
+  adminer:
+    container_name: "marking-adminer"
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8085:8080"
+    networks:
+      - backbone
+
+volumes:
+  postgres_data:
+
+networks:
+  backbone:
+    name: backbone
+    driver: bridge
