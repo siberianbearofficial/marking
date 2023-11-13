@@ -1,0 +1,18 @@
+<div class="container-sm p-5">
+  <div class="h1 center-text pb-5">Архив</div>
+
+  <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+  <div class="alert alert-info" *ngIf="!records?.length && !error">На данный момент в архиве нет ни одной записи.
+    Добавить можно <a class="alert-link text-decoration-none" routerLink="/add">здесь</a>.
+  </div>
+
+  <app-records-list *ngIf="records?.length" [records]="records"
+                    (recordDeletionEvent)="onRecordDelete($event)"
+                    (recordIdealIconClickEvent)="onRecordIdealIconClick($event)"
+                    (recordPhotoIconClickEvent)="onRecordPhotoIconClick($event)">
+  </app-records-list>
+
+  <div class="p-5 text-muted text-center">
+    <a class="link-dark text-decoration-none fst-italic link-opacity-75-hover" routerLink="/main">Назад</a>
+  </div>
+</div>
