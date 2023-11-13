@@ -1,0 +1,15 @@
+bcrypt==4.0.1
+fastapi==0.100.0
+imutils==0.5.4
+opencv-python-headless
+Pillow==9.4.0
+pydantic==2.0.3
+pydantic_core==2.3.0
+PyJWT==2.8.0
+python-multipart==0.0.6
+uvicorn==0.23.1
+psycopg2-binary
+pyzbar
+numpy
+scipy
+python-dotenv
